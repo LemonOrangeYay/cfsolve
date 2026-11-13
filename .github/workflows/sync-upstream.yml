@@ -1,0 +1,32 @@
+name: Sync Upstream
+
+on:
+  schedule:
+    # 每天 UTC 时间 0:00（北京时间 8:00）自动运行一次
+    - cron: '0 0 * * *'
+  # 允许在 GitHub 网页端手动点击触发同步
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Fork Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync with Upstream
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 替换为原仓库（Upstream）的地址
+          git remote add upstream https://github.com/chris124567/cfsolve.git
+          git fetch upstream
+          # 替换为你要同步的主分支名称（通常是 main 或 master）
+          git checkout main
+          git merge upstream/main
+          git push origin main
