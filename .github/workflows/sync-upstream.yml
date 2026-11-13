@@ -27,6 +27,6 @@ jobs:
           git remote add upstream https://github.com/chris124567/cfsolve.git
           git fetch upstream
           # 替换为你要同步的主分支名称（通常是 main 或 master）
-          git checkout main
+          git checkout master
           git merge upstream/master
           git push origin master
