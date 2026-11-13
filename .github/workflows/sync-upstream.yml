@@ -28,5 +28,5 @@ jobs:
           git fetch upstream
           # 替换为你要同步的主分支名称（通常是 main 或 master）
           git checkout main
-          git merge upstream/main
-          git push origin main
+          git merge upstream/master
+          git push origin master
