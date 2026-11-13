@@ -2,9 +2,8 @@ name: Sync Upstream
 
 on:
   schedule:
-    # 每天 UTC 时间 0:00（北京时间 8:00）自动运行一次
-    - cron: '0 0 * * *'
-  # 允许在 GitHub 网页端手动点击触发同步
+    # 每 6 小时自动运行一次（UTC 时间的 0:00, 6:00, 12:00, 18:00，对应北京时间 8:00, 14:00, 20:00, 次日 2:00）
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 permissions:
